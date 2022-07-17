@@ -1,0 +1,22 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "hands on node, express and mongoDB",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HumayunHabib/Natours-Bootcamp.git"
+  },
+  "author": "Humayun Habib",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HumayunHabib/Natours-Bootcamp/issues"
+  },
+  "homepage": "https://github.com/HumayunHabib/Natours-Bootcamp#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
