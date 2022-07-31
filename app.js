@@ -1,17 +1,34 @@
+// https://www.natours.dev/api/v1/tours/5c88fa8cf4afda39709c2955
 const fs = require('fs');
 const express = require('express');
+const morgan = require('morgan');
 const app = express();
+
+//1) Middlewares
+
+app.use(morgan('dev'));
 app.use(express.json());
 
-// https://www.natours.dev/api/v1/tours/5c88fa8cf4afda39709c2955
+app.use((req, res, next) => {
+  console.log('helo from the middleware👋 wav');
+  next();
+});
+
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  next();
+});
 
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
 
+//1) Route Hanler
 const getAllTours = (req, res) => {
+  console.log(req.requestTime);
   res.status(200).json({
     status: 'success',
+    requestedAt: req.requestTime,
     results: tours.length,
     data: {
       tours,
@@ -92,7 +109,9 @@ const deleteTour = (req, res) => {
 // app.patch('/api/v1/tours/:id', updateTour);
 // app.delete('/api/v1/tours/:id', deleteTour);
 
+// Routes
 app.route('/api/v1/tours').get(getAllTours).post(createTour);
+
 app
   .route('/api/v1/tours/:id')
   .get(getTour)
