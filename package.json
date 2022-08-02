@@ -4,7 +4,8 @@
   "description": "hands on node, express and mongoDB",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "nodemon server.js",
+    "start:prod": "SET NODE_ENV=production && nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/HumayunHabib/Natours-Bootcamp#readme",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "morgan": "^1.10.0"
   }
